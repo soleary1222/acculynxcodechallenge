@@ -1,17 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Questions from './components/questions';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Questions from "./components/questions";
+import {BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import DetailView from "./components/detail";
+import questions from "./components/questions";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <Questions />
-      {/* <div className="App">
-        
-      </div> */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Questions />} />
+          <Route path="/detail/:questionId" element={<DetailView />} />
+        </Routes>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
