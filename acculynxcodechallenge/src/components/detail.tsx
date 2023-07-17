@@ -14,7 +14,7 @@ const DetailView = () => {
 
   // Find the question with the matching ID
   const apiKey = constants.apiKey;
-  const apiUrl = `https://api.stackexchange.com/2.3/question/${questionId}?key=${apiKey}`;
+  const apiUrl = `https://api.stackexchange.com/2.3/questions/${questionId}?site=stackoverflow&filter=withbody&key=${apiKey}`;
 
   axios.get(apiUrl)
     .then(response => {

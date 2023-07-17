@@ -9,6 +9,7 @@ interface Question {
   title: string;
   link: string;
   owner: any;
+  body: any;
   tags: any;
 }
 
@@ -18,7 +19,7 @@ const Questions: React.FC = () => {
   useEffect(() => {
     // Replace YOUR_API_KEY with the actual API key you obtained from StackOverflow
     const apiKey = constants.apiKey;
-    const apiUrl = `https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=creation&site=stackoverflow&key=${apiKey}&accepted=true&answers=2`;
+    const apiUrl = `https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=creation&site=stackoverflow&filter=withbody&key=${apiKey}&accepted=true&answers=2`;
 
     axios.get(apiUrl)
       .then(response => {
@@ -42,7 +43,9 @@ const Questions: React.FC = () => {
             title={question.title}
             description={question.tags.join(', ')}
             imageUrl={question.owner.profile_image}
+            body={question.body}
             questionId={question.question_id}
+            link={question.link}
             />
         ))}
       </div>
