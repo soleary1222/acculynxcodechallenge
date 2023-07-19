@@ -1,34 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/card.css";
+import { QuestionProps } from "../interfaces/questionProps";
 
-
-
-interface CardProps {
-  title: string;
-  description: string;
-  body: string;
-  imageUrl: string;
-  questionId: string;
-  link: string;
-}
-
-const Card: React.FC<CardProps> = ({ title, description, body, imageUrl, questionId, link }) => {
-  //const htmlToReactParser = new HtmlToReactParser();
-  //const reactElement = htmlToReactParser.parse(body);
+const Card: React.FC<QuestionProps> = ({
+  title,
+  tags,
+  body,
+  imageUrl,
+  question_id,
+  link,
+}) => {
   const regex = /(<([^>]+)>)/gi;
-  const content = body.replace(regex, "").substring(0,100)+"...";
+  const content = body.replace(regex, "").substring(0, 100) + "...";
 
   return (
     <div className="card">
       {imageUrl && <img src={imageUrl} alt="Poster Avatar" />}
       <div className="card-content">
-        <Link to={`/detail/${questionId}`}>
+        <Link to={`/detail/${question_id}`}>
           <h2>{title}</h2>
         </Link>
         <div>{content}</div>
-        <p>Tags: {description}</p>
-
+        <p>Tags: {tags}</p>
         <a href={link}>Link to StackOverflow</a>
       </div>
     </div>
