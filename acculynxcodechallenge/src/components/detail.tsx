@@ -49,7 +49,7 @@ const DetailView = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, [questionId]);
 
   return (
     <div>
