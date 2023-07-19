@@ -1,3 +1,3 @@
 # acculynxcodechallenge
 
-[Instructions here]{acculynxcodechallenege/readme.md}
+[Instructions here](acculynxcodechallenege/readme.md)
